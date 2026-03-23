@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoCycle AI - Smart Waste Management</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/>
+                        <path d="M25 10 L25 40 M15 25 L35 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M18 18 L32 32 M32 18 L18 32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span class="brand-text">EcoCycle<span class="ai-text">AI</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="scanner.html">Waste Scanner</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="vendor-dashboard.html">Vendor Portal</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-secondary" onclick="location.href='login.html'">Login</button>
+                <button class="btn-primary" onclick="location.href='signup.html'">Get Started</button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="badge">AI-Powered Sustainability</div>
+                    <h1 class="hero-title">
+                        Transform Your
+                        <span class="gradient-text">Waste</span>
+                        Into
+                        <span class="gradient-text">Value</span>
+                    </h1>
+                    <p class="hero-description">
+                        Deep learning meets circular economy. Instantly identify and classify your waste 
+                        as recyclable or non-recyclable, connect with vendors, and earn rewards for every item you recycle.
+                    </p>
+                    <div class="hero-cta">
+                        <button class="btn-large btn-primary" onclick="location.href='scanner.html'">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <path d="m21 15-5-5L5 21"/>
+                            </svg>
+                            Start Scanning Now
+                        </button>
+                        <button class="btn-large btn-outline" onclick="location.href='#how-it-works'">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"/>
+                            </svg>
+                            Watch Demo
+                        </button>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" data-target="92">0</div>
+                            <div class="stat-label">Detection Accuracy</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" data-target="25">0</div>
+                            <div class="stat-label">FPS Real-time</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" data-target="3400">0</div>
+                            <div class="stat-label">Tonnes Saved</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="scan-animation">
+                                    <div class="scan-line"></div>
+                                    <div class="detection-box box-1">
+                                        <span class="detection-label">Plastic Bottle</span>
+                                        <span class="detection-value recyclable">♻️ Recyclable</span>
+                                    </div>
+                                    <div class="detection-box box-2">
+                                        <span class="detection-label">Glass Jar</span>
+                                        <span class="detection-value recyclable">♻️ Recyclable</span>
+                                    </div>
+                                    <div class="detection-box box-3">
+                                        <span class="detection-label">Battery</span>
+                                        <span class="detection-value non-recyclable">⚠️ Non-Recyclable</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Intelligent Features</h2>
+                <p class="section-subtitle">Powered by YOLOv8 deep learning and real-time analytics</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-index="0">
+                    <div class="feature-icon icon-1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">AI Waste Detection</h3>
+                    <p class="feature-description">
+                        YOLOv8-powered real-time identification of plastic, glass, paper, metals, 
+                        and more with 92% accuracy at 25 FPS.
+                    </p>
+                    <div class="feature-tags">
+                        <span>YOLOv8</span>
+                        <span>Real-time</span>
+                        <span>Multi-class</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-index="1">
+                    <div class="feature-icon icon-2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Instant Classification</h3>
+                    <p class="feature-description">
+                        Every detected item is immediately classified as recyclable or non-recyclable 
+                        with the correct bin colour — blue, red, green or e-waste.
+                    </p>
+                    <div class="feature-tags">
+                        <span>Recyclable</span>
+                        <span>Bin Guidance</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-index="2">
+                    <div class="feature-icon icon-3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Impact Analytics</h3>
+                    <p class="feature-description">
+                        Track your environmental contribution: CO₂ reduction, trees saved, 
+                        water conservation, and personal leaderboards.
+                    </p>
+                    <div class="feature-tags">
+                        <span>CO₂ Tracking</span>
+                        <span>Gamification</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-index="3">
+                    <div class="feature-icon icon-4">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Smart Bin Guidance</h3>
+                    <p class="feature-description">
+                        Instant recommendations for proper disposal: blue bin for recyclables, 
+                        red bin for hazardous materials.
+                    </p>
+                    <div class="feature-tags">
+                        <span>Automated</span>
+                        <span>Color-coded</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-index="4">
+                    <div class="feature-icon icon-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="8" r="7"/>
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Rewards System</h3>
+                    <p class="feature-description">
+                        Earn tokens for recycling, redeem for discounts, or get instant cash. 
+                        Connect directly with verified scrap vendors.
+                    </p>
+                    <div class="feature-tags">
+                        <span>Tokens</span>
+                        <span>Cash Rewards</span>
+                    </div>
+                </div>
+
+                <div class="feature-card" data-index="5">
+                    <div class="feature-icon icon-6">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Vendor Network</h3>
+                    <p class="feature-description">
+                        Seamless pickup scheduling with verified vendors. Choose your payment method 
+                        and track collection in real-time.
+                    </p>
+                    <div class="feature-tags">
+                        <span>Verified</span>
+                        <span>Real-time</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">From scan to reward in four simple steps</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-step="1">
+                    <div class="timeline-number">01</div>
+                    <div class="timeline-content">
+                        <h3>Capture Waste</h3>
+                        <p>Use your camera to snap a photo of recyclable materials. Our web app works on any device.</p>
+                    </div>
+                    <div class="timeline-visual">
+                        <div class="visual-icon camera-icon">📸</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-step="2">
+                    <div class="timeline-number">02</div>
+                    <div class="timeline-content">
+                        <h3>AI Detection</h3>
+                        <p>YOLOv8 instantly identifies materials: plastic, glass, paper, copper, iron, and classifies recyclability.</p>
+                    </div>
+                    <div class="timeline-visual">
+                        <div class="visual-icon ai-icon">🤖</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-step="3">
+                    <div class="timeline-number">03</div>
+                    <div class="timeline-content">
+                        <h3>Classify &amp; Sort</h3>
+                        <p>Items are instantly classified as recyclable or non-recyclable with the correct bin colour and disposal guide.</p>
+                    </div>
+                    <div class="timeline-visual">
+                        <div class="visual-icon">♻️</div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-step="4">
+                    <div class="timeline-number">04</div>
+                    <div class="timeline-content">
+                        <h3>Earn Rewards</h3>
+                        <p>Schedule pickup, receive payment, and watch your environmental impact grow on the dashboard.</p>
+                    </div>
+                    <div class="timeline-visual">
+                        <div class="visual-icon reward-icon">🎁</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact">
+        <div class="container">
+            <div class="impact-content">
+                <div class="impact-text">
+                    <h2 class="impact-title">Measure Your Environmental Impact</h2>
+                    <p class="impact-description">
+                        Every scan contributes to a greener planet. Track real metrics that matter:
+                        carbon reduction, resource conservation, and community rankings.
+                    </p>
+                    <div class="impact-metrics">
+                        <div class="metric-card">
+                            <div class="metric-icon">🌍</div>
+                            <div class="metric-info">
+                                <div class="metric-value">2.4K kg</div>
+                                <div class="metric-label">CO₂ Reduced</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">🌳</div>
+                            <div class="metric-info">
+                                <div class="metric-value">180</div>
+                                <div class="metric-label">Trees Saved</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">💧</div>
+                            <div class="metric-info">
+                                <div class="metric-value">15K L</div>
+                                <div class="metric-label">Water Conserved</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="location.href='dashboard.html'">View Full Dashboard</button>
+                </div>
+                <div class="impact-visual">
+                    <div class="circular-progress">
+                        <svg class="progress-ring" width="300" height="300">
+                            <circle class="progress-ring-bg" cx="150" cy="150" r="130"/>
+                            <circle class="progress-ring-fill" cx="150" cy="150" r="130"/>
+                        </svg>
+                        <div class="progress-text">
+                            <div class="progress-value">87%</div>
+                            <div class="progress-label">Recycling Goal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Make Waste Valuable?</h2>
+                <p class="cta-description">Join thousands of users transforming trash into treasure</p>
+                <button class="btn-large btn-white" onclick="location.href='signup.html'">
+                    Get Started Free
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/>
+                                <path d="M25 10 L25 40 M15 25 L35 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <span>EcoCycle<span class="ai-text">AI</span></span>
+                    </div>
+                    <p class="footer-tagline">Transforming waste into value through AI and sustainability</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                        <a href="#" class="social-link">GitHub</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="scanner.html">Waste Scanner</a>
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="rewards.html">Rewards</a>
+                        <a href="vendors.html">Vendors</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="about.html">About</a>
+                        <a href="#">Team</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">API</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoCycle AI. Vision Institute of Technology, Aligarh</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

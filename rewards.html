@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewards - EcoCycle AI</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="rewards.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 50 50" fill="none"><circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/><path d="M25 10 L25 40 M15 25 L35 25" stroke="currentColor" stroke-width="2.5"/></svg>
+                </div>
+                <span class="brand-text">EcoCycle<span class="ai-text">AI</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="scanner.html">Waste Scanner</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="rewards.html" class="active">Rewards</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="vendor-dashboard.html">Vendor Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="rewards-hero">
+        <div class="container">
+            <div class="rewards-hero-badge">🎁 Your Rewards</div>
+            <h1>Turn EcoTokens Into <span class="gradient-text">Real Rewards</span></h1>
+            <p>Earn tokens by recycling, redeem for vouchers, products or donate to green causes</p>
+        </div>
+    </section>
+
+    <section class="rewards-balance">
+        <div class="container">
+            <div class="balance-grid">
+                <div class="balance-card balance-primary">
+                    <div class="balance-card-icon">🪙</div>
+                    <div class="balance-card-body">
+                        <div class="balance-label">EcoTokens Balance</div>
+                        <div class="balance-value">8,540</div>
+                        <div class="balance-sub">Available to redeem</div>
+                    </div>
+                </div>
+                <div class="balance-card">
+                    <div class="balance-card-icon">💰</div>
+                    <div class="balance-card-body">
+                        <div class="balance-label">Cash Earnings</div>
+                        <div class="balance-value">₹2,450</div>
+                        <div class="balance-sub">Available to withdraw</div>
+                    </div>
+                </div>
+                <div class="balance-card">
+                    <div class="balance-card-icon">🏆</div>
+                    <div class="balance-card-body">
+                        <div class="balance-label">Lifetime Rewards</div>
+                        <div class="balance-value">₹12,340</div>
+                        <div class="balance-sub">Total earned all time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rewards-catalog">
+        <div class="container">
+            <div class="catalog-header">
+                <div>
+                    <h2>Redeem Rewards</h2>
+                    <p class="catalog-sub">You have <strong>8,540 tokens</strong> available to spend</p>
+                </div>
+                <div class="filter-tabs">
+                    <button class="tab-btn active" data-category="all">All</button>
+                    <button class="tab-btn" data-category="vouchers">Vouchers</button>
+                    <button class="tab-btn" data-category="products">Products</button>
+                    <button class="tab-btn" data-category="donations">Donations</button>
+                </div>
+            </div>
+
+            <div class="rewards-grid">
+
+                <div class="reward-card" data-category="vouchers">
+                    <div class="reward-badge-popular">🔥 Popular</div>
+                    <div class="reward-emoji">🛍️</div>
+                    <div class="reward-body">
+                        <h3 class="reward-name">Amazon Gift Card</h3>
+                        <p class="reward-desc">₹500 shopping voucher redeemable on Amazon.in</p>
+                        <div class="reward-footer">
+                            <div class="reward-token-cost"><span class="token-icon">🪙</span><span class="token-count">500 tokens</span></div>
+                            <button class="btn-primary reward-btn" onclick="redeemReward(this,'Amazon Gift Card',500)">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reward-card" data-category="vouchers">
+                    <div class="reward-emoji">🍕</div>
+                    <div class="reward-body">
+                        <h3 class="reward-name">Food Delivery Voucher</h3>
+                        <p class="reward-desc">₹300 credit on Zomato or Swiggy of your choice</p>
+                        <div class="reward-footer">
+                            <div class="reward-token-cost"><span class="token-icon">🪙</span><span class="token-count">300 tokens</span></div>
+                            <button class="btn-primary reward-btn" onclick="redeemReward(this,'Food Delivery Voucher',300)">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reward-card" data-category="products">
+                    <div class="reward-badge-new">✨ New</div>
+                    <div class="reward-emoji">🌱</div>
+                    <div class="reward-body">
+                        <h3 class="reward-name">Eco-Friendly Starter Kit</h3>
+                        <p class="reward-desc">Reusable bags, steel bottles &amp; bamboo cutlery set</p>
+                        <div class="reward-footer">
+                            <div class="reward-token-cost"><span class="token-icon">🪙</span><span class="token-count">800 tokens</span></div>
+                            <button class="btn-primary reward-btn" onclick="redeemReward(this,'Eco-Friendly Starter Kit',800)">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reward-card" data-category="donations">
+                    <div class="reward-emoji">🌳</div>
+                    <div class="reward-body">
+                        <h3 class="reward-name">Plant a Tree</h3>
+                        <p class="reward-desc">We plant a real tree in your name to support reforestation</p>
+                        <div class="reward-footer">
+                            <div class="reward-token-cost"><span class="token-icon">🪙</span><span class="token-count">200 tokens</span></div>
+                            <button class="btn-primary reward-btn" onclick="redeemReward(this,'Plant a Tree',200)">Donate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reward-card" data-category="vouchers">
+                    <div class="reward-emoji">🎬</div>
+                    <div class="reward-body">
+                        <h3 class="reward-name">Movie Tickets</h3>
+                        <p class="reward-desc">2 PVR or INOX movie tickets of your choice</p>
+                        <div class="reward-footer">
+                            <div class="reward-token-cost"><span class="token-icon">🪙</span><span class="token-count">600 tokens</span></div>
+                            <button class="btn-primary reward-btn" onclick="redeemReward(this,'Movie Tickets',600)">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reward-card" data-category="products">
+                    <div class="reward-emoji">📱</div>
+                    <div class="reward-body">
+                        <h3 class="reward-name">Recycled Phone Case</h3>
+                        <p class="reward-desc">Protective case made from 100% recycled plastic</p>
+                        <div class="reward-footer">
+                            <div class="reward-token-cost"><span class="token-icon">🪙</span><span class="token-count">400 tokens</span></div>
+                            <button class="btn-primary reward-btn" onclick="redeemReward(this,'Recycled Phone Case',400)">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reward-card" data-category="vouchers">
+                    <div class="reward-emoji">💳</div>
+                    <div class="reward-body">
+                        <h3 class="reward-name">Paytm Cashback</h3>
+                        <p class="reward-desc">₹200 direct cashback to your Paytm wallet</p>
+                        <div class="reward-footer">
+                            <div class="reward-token-cost"><span class="token-icon">🪙</span><span class="token-count">250 tokens</span></div>
+                            <button class="btn-primary reward-btn" onclick="redeemReward(this,'Paytm Cashback',250)">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reward-card" data-category="donations">
+                    <div class="reward-emoji">💧</div>
+                    <div class="reward-body">
+                        <h3 class="reward-name">Clean Water Donation</h3>
+                        <p class="reward-desc">Provide clean water access to one family for a month</p>
+                        <div class="reward-footer">
+                            <div class="reward-token-cost"><span class="token-icon">🪙</span><span class="token-count">150 tokens</span></div>
+                            <button class="btn-primary reward-btn" onclick="redeemReward(this,'Clean Water Donation',150)">Donate</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="earn-section">
+        <div class="container">
+            <h2>How to Earn Tokens</h2>
+            <div class="earn-grid">
+                <div class="earn-card"><div class="earn-icon">🔬</div><div class="earn-info"><h4>Scan &amp; Classify Waste</h4><p>10 tokens per item scanned</p></div><div class="earn-amount">+10 tokens</div></div>
+                <div class="earn-card"><div class="earn-icon">📅</div><div class="earn-info"><h4>Complete a Pickup</h4><p>50 tokens per completed pickup</p></div><div class="earn-amount">+50 tokens</div></div>
+                <div class="earn-card"><div class="earn-icon">🌟</div><div class="earn-info"><h4>Daily Login Streak</h4><p>Bonus tokens for consecutive logins</p></div><div class="earn-amount">+5 tokens</div></div>
+                <div class="earn-card"><div class="earn-icon">👥</div><div class="earn-info"><h4>Refer a Friend</h4><p>100 tokens per successful referral</p></div><div class="earn-amount">+100 tokens</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="redemption-history">
+        <div class="container">
+            <h2>Redemption History</h2>
+            <div class="history-list">
+                <div class="history-item">
+                    <div class="history-icon">🛍️</div>
+                    <div class="history-details"><h4>Amazon Gift Card — ₹500</h4><span class="history-date">Jan 28, 2025</span></div>
+                    <div class="history-tokens">−500 tokens</div>
+                    <div class="history-status completed">Delivered</div>
+                </div>
+                <div class="history-item">
+                    <div class="history-icon">🌳</div>
+                    <div class="history-details"><h4>Plant a Tree Donation</h4><span class="history-date">Jan 15, 2025</span></div>
+                    <div class="history-tokens">−200 tokens</div>
+                    <div class="history-status completed">Completed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redeem Confirmation Modal -->
+    <div class="modal" id="redeemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Redemption</h3>
+                <button class="modal-close" id="redeemModalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="redeemModalText">Redeem selected reward?</p>
+                <div class="modal-actions">
+                    <button class="btn-secondary" id="redeemCancelBtn">Cancel</button>
+                    <button class="btn-primary" id="redeemConfirmBtn">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer"><div class="container"><p>&copy; 2025 EcoCycle AI</p></div></footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        let pendingRedemption = null;
+
+        const redeemModal = document.getElementById('redeemModal');
+        const redeemModalText = document.getElementById('redeemModalText');
+        const redeemConfirmBtn = document.getElementById('redeemConfirmBtn');
+        const redeemCancelBtn = document.getElementById('redeemCancelBtn');
+        const redeemModalClose = document.getElementById('redeemModalClose');
+
+        function openRedeemModal(btn, name, cost) {
+            pendingRedemption = { btn, name, cost };
+            const tone = cost > 1000 ? 'high' : 'normal';
+            redeemModalText.textContent = `Are you sure you want to redeem ${cost} EcoTokens for ${name}?`;
+            redeemModal.classList.add('active');
+        }
+
+        function closeRedeemModal() {
+            redeemModal.classList.remove('active');
+            pendingRedemption = null;
+        }
+
+        function redeemReward(btn, name, cost) {
+            openRedeemModal(btn, name, cost);
+        }
+
+        function confirmRedeem() {
+            if (!pendingRedemption) return;
+
+            const { btn, name, cost } = pendingRedemption;
+            const tokenBalanceEl = document.querySelector('.balance-card .balance-value');
+            const currentBalance = parseInt(tokenBalanceEl.textContent.replace(/,/g, ''), 10);
+
+            if (currentBalance < cost) {
+                window.EcoCycle.showToast('⚠️ Not enough tokens', 'sunset');
+                closeRedeemModal();
+                return;
+            }
+
+            btn.textContent = '⏳ Redeeming…';
+            btn.disabled = true;
+            closeRedeemModal();
+
+            setTimeout(() => {
+                const newBalance = currentBalance - cost;
+                tokenBalanceEl.textContent = newBalance.toLocaleString('en-IN');
+                window.EcoCycle.showToast('✅ ' + name + ' redeemed! Code sent to your email.', 'success');
+                btn.textContent = '✓ Redeemed';
+                btn.style.background = 'var(--gray-300)';
+                btn.style.color = 'var(--gray-600)';
+            }, 1000);
+        }
+
+        redeemConfirmBtn.addEventListener('click', confirmRedeem);
+        redeemCancelBtn.addEventListener('click', closeRedeemModal);
+        redeemModalClose.addEventListener('click', closeRedeemModal);
+
+        redeemModal.addEventListener('click', function (event) {
+            if (event.target === redeemModal) {
+                closeRedeemModal();
+            }
+        });
+    </script>
+</body>
+</html>

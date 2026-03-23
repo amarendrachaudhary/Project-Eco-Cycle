@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Profile - EcoCycle AI</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="vendors.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/>
+                        <path d="M25 10 L25 40 M15 25 L35 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span class="brand-text">EcoCycle<span class="ai-text">AI</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="scanner.html">Waste Scanner</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="vendor-dashboard.html">Vendor Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="vendors-hero" style="padding: 2.5rem 0 1.5rem;">
+        <div class="container">
+            <h1 id="vendorNameTitle">Vendor Name</h1>
+            <p id="vendorTagline">Trusted recycling partner in your city</p>
+        </div>
+    </section>
+
+    <section class="vendor-profile-main" style="padding: 2rem 0 3rem; background: var(--gray-50);">
+        <div class="container" style="max-width: 1000px;">
+            <div class="vendor-profile-card" style="padding: 1.5rem;">
+                <div style="display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: flex-start;">
+                    <div style="flex: 1 1 280px; min-width: 280px;">
+                        <div style="font-size: 3rem; width: 80px; height: 80px; display:flex; align-items:center; justify-content:center; border-radius: var(--radius-lg); background: rgba(16,185,129,0.1);">🏢</div>
+                        <div style="margin-top: 1rem; font-weight: 600;">Vendor Rating</div>
+                        <div id="vendorRating" style="font-size: 1.2rem; margin-top: 0.2rem;">⭐⭐⭐⭐⭐ 4.9 (245 reviews)</div>
+                    </div>
+
+                    <div style="flex: 2 1 400px;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.9rem; color: var(--gray-600);">
+                            <div>📍 <span id="vendorLocation">Sector 12, Noida</span></div>
+                            <div>💼 <span id="vendorType">All materials accepted</span></div>
+                            <div>⏱ <span id="vendorHours">Mon - Sat 8AM - 8PM</span></div>
+                            <div>💧 <span id="vendorYears">7 years in business</span></div>
+                        </div>
+
+                        <p id="vendorDescription" style="margin-top: 0.9rem; color: var(--gray-700); line-height: 1.6;">Reliable door-to-door collection with live tracking and transparent rate cards. Specializes in plastic, glass, paper, metal and e-waste recycling.</p>
+
+                        <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1rem;">
+                            <a href="vendors.html" class="btn-outline">← Back to Vendors</a>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style="margin:1.4rem 0; border-color: var(--gray-200);" />
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1rem;">
+                    <div style="background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1rem;">
+                        <h4>Material Speciality</h4>
+                        <p id="vendorSpecialty" style="color: var(--gray-600);">Plastic, Glass, Paper, Metal, E-Waste</p>
+                    </div>
+                    <div style="background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1rem;">
+                        <h4>Pickup Policies</h4>
+                        <p id="vendorPolicy" style="color: var(--gray-600);">Minimum 2 kg. Free pickup within 5 km. Same-day for confirmed orders.</p>
+                    </div>
+                    <div style="background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1rem;">
+                        <h4>Deposit Rate</h4>
+                        <p id="vendorRate" style="color: var(--gray-600);">Average ₹6/kg for plastic, ₹8/kg for glass, ₹15/kg for metals.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 1.25rem; background: #fff; border:1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1rem;">
+                <h3>EcoTokens Account</h3>
+                <p style="color: var(--gray-600);" id="tokenStatus">Available: 640 EcoTokens</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const vendorMeta = {
+            "GreenCycle Solutions": {
+                tagline: "Verified vendor · Delhi-NCR",
+                location: "Sector 12, Noida — 1.2 km away",
+                type: "All materials accepted",
+                hours: "Mon - Sat 8AM - 8PM",
+                years: "7 years in business",
+                description: "Best rates guaranteed for all recyclable materials. Trusted by 1200+ customers in Delhi-NCR.",
+                specialty: "Plastic, Glass, Paper, Metal, E-Waste",
+                policy: "Minimum 2 kg. Free pickup within 5 km. Same-day for confirmed orders.",
+                rate: "Best rate cards with pickup bonus: ₹8/kg (plastic), ₹10/kg (glass), ₹18/kg (metal).",
+                tokens: 640,
+                rating: "⭐⭐⭐⭐⭐ 4.9 (245 reviews)"
+            },
+            "EcoWaste Collectors": {
+                tagline: "Trusted in Mumbai",
+                location: "Andheri West, Mumbai — 2.5 km away",
+                type: "Plastic, Paper focused",
+                hours: "Mon - Sat 9AM - 7PM",
+                years: "5 years in business",
+                description: "Specialising in plastic and paper recycling with quick turnaround. Same-day pickups available.",
+                specialty: "Plastic, Paper",
+                policy: "Minimum 1.5 kg. Free under 5 km. Competitive eco-tokens bonus.",
+                rate: "Plastic ₹7/kg, Paper ₹5/kg, extra tokens on bulk.:",
+                tokens: 520,
+                rating: "⭐⭐⭐⭐ 4.6 (189 reviews)"
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const wishlist = params.get('vendor') || 'GreenCycle Solutions';
+        const vendorName = decodeURIComponent(wishlist);
+
+        const vendor = vendorMeta[vendorName] || vendorMeta['GreenCycle Solutions'];
+
+        document.getElementById('vendorNameTitle').textContent = vendorName;
+        document.getElementById('vendorTagline').textContent = vendor.tagline;
+        document.getElementById('vendorLocation').textContent = vendor.location;
+        document.getElementById('vendorType').textContent = vendor.type;
+        document.getElementById('vendorHours').textContent = vendor.hours;
+        document.getElementById('vendorYears').textContent = vendor.years;
+        document.getElementById('vendorDescription').textContent = vendor.description;
+        document.getElementById('vendorSpecialty').textContent = vendor.specialty;
+        document.getElementById('vendorPolicy').textContent = vendor.policy;
+        document.getElementById('vendorRate').textContent = vendor.rate;
+        document.getElementById('tokenStatus').textContent = `Available: ${vendor.tokens} EcoTokens`;
+        document.getElementById('vendorRating').textContent = vendor.rating || '⭐⭐⭐⭐⭐ 4.9 (245 reviews)';
+    </script>
+</body>
+</html>

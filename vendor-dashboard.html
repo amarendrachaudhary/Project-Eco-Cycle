@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Dashboard - EcoCycle AI</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="vendor-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="vendor-page">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/>
+                        <path d="M25 10 L25 40 M15 25 L35 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span class="brand-text">EcoCycle<span class="ai-text">AI</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="scanner.html">Waste Scanner</a></li>
+                <li><a href="dashboard.html">User Dashboard</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="vendor-dashboard.html" class="active">Vendor Portal</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="vendor-badge-nav">🏢 Vendor Mode</div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="vendor-layout">
+
+        <!-- Sidebar -->
+        <aside class="vendor-sidebar">
+            <div class="vendor-profile-card">
+                <div class="vp-avatar">🏢</div>
+                <div class="vp-info">
+                    <h3>GreenCycle Solutions</h3>
+                    <p>Verified Vendor · Delhi-NCR</p>
+                </div>
+                <span class="verified-badge">✓ Verified</span>
+            </div>
+
+            <nav class="vendor-nav">
+                <a href="#pickups" class="vnav-item active">
+                    <span>📅</span> Pickup Requests
+                    <span class="vnav-count" id="pendingCount">3</span>
+                </a>
+                <a href="#completed" class="vnav-item">
+                    <span>✅</span> Completed
+                </a>
+                <a href="#analytics" class="vnav-item">
+                    <span>📊</span> Analytics
+                </a>
+                <a href="#profile" class="vnav-item">
+                    <span>⚙️</span> My Profile
+                </a>
+                <a href="vendors.html" class="vnav-item">
+                    <span>👥</span> Browse Vendors
+                </a>
+            </nav>
+
+            <div class="vendor-stats-mini">
+                <div class="vstat"><div class="vstat-val" id="totalPickups">12</div><div class="vstat-label">Total Pickups</div></div>
+                <div class="vstat"><div class="vstat-val">4.9</div><div class="vstat-label">Avg Rating</div></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="vendor-main">
+
+            <!-- Header -->
+            <div class="vendor-header">
+                <div>
+                    <h1>Pickup Dashboard</h1>
+                    <p>Manage incoming pickup requests from users</p>
+                </div>
+                <div class="vendor-header-actions">
+                    <button class="btn-secondary" onclick="filterPickups('all')">All Requests</button>
+                    <button class="btn-primary" onclick="window.EcoCycle.showToast('Notifications enabled!','success')">🔔 Enable Alerts</button>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="vdash-stats">
+                <div class="vdash-stat green">
+                    <div class="vds-icon">⏳</div>
+                    <div class="vds-body">
+                        <div class="vds-value" id="statPending">3</div>
+                        <div class="vds-label">Pending</div>
+                    </div>
+                </div>
+                <div class="vdash-stat blue">
+                    <div class="vds-icon">🚛</div>
+                    <div class="vds-body">
+                        <div class="vds-value" id="statConfirmed">2</div>
+                        <div class="vds-label">Confirmed</div>
+                    </div>
+                </div>
+                <div class="vdash-stat teal">
+                    <div class="vds-icon">✅</div>
+                    <div class="vds-body">
+                        <div class="vds-value" id="statCompleted">7</div>
+                        <div class="vds-label">Completed</div>
+                    </div>
+                </div>
+                <div class="vdash-stat purple">
+                    <div class="vds-icon">📦</div>
+                    <div class="vds-body">
+                        <div class="vds-value">43 kg</div>
+                        <div class="vds-label">Weight Collected</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="pickup-filter-tabs">
+                <button class="pf-tab active" onclick="filterPickups('all', this)">All Requests</button>
+                <button class="pf-tab" onclick="filterPickups('pending', this)">⏳ Pending</button>
+                <button class="pf-tab" onclick="filterPickups('confirmed', this)">🚛 Confirmed</button>
+                <button class="pf-tab" onclick="filterPickups('completed', this)">✅ Completed</button>
+                <button class="pf-tab" onclick="filterPickups('cancelled', this)">❌ Cancelled</button>
+            </div>
+
+            <!-- Pickup Cards -->
+            <div class="pickups-list" id="pickupsList">
+
+                <div class="pickup-card" data-status="pending">
+                    <div class="pickup-card-header">
+                        <div class="pickup-user-info">
+                            <div class="pickup-user-avatar">👤</div>
+                            <div>
+                                <div class="pickup-user-name">Rahul Sharma</div>
+                                <div class="pickup-user-contact">📞 98765-43210 · ✉️ rahul@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class="pickup-meta-right">
+                            <span class="status-chip status-pending">⏳ Pending</span>
+                            <span class="pickup-req-id">#REQ-001</span>
+                        </div>
+                    </div>
+
+                    <div class="pickup-card-body">
+                        <div class="pickup-info-grid">
+                            <div class="pickup-info-item">
+                                <div class="pii-label">📅 Date</div>
+                                <div class="pii-value">March 18, 2025</div>
+                            </div>
+                            <div class="pickup-info-item">
+                                <div class="pii-label">🕐 Time Slot</div>
+                                <div class="pii-value">10:00 AM – 12:00 PM</div>
+                            </div>
+                            <div class="pickup-info-item">
+                                <div class="pii-label">⚖️ Est. Weight</div>
+                                <div class="pii-value">~8 kg</div>
+                            </div>
+                        </div>
+
+                        <div class="pickup-address">
+                            <span class="pii-label">📍 Address</span>
+                            <span class="pii-value">Flat 204, Green Colony, Sector 12, Noida — 201301</span>
+                        </div>
+
+                        <div class="pickup-items-desc">
+                            <span class="pii-label">📦 Items</span>
+                            <span class="pii-value">5 plastic bottles, 2 kg newspapers, 3 glass jars, copper wire scraps</span>
+                        </div>
+
+                        <div class="pickup-notes">
+                            <span>📝 Notes:</span> Ring doorbell twice. Call before arriving.
+                        </div>
+                    </div>
+
+                    <div class="pickup-card-actions">
+                        <button class="btn-primary" onclick="updateStatus(this, 'confirmed')">✅ Confirm Pickup</button>
+                        <button class="btn-secondary" onclick="updateStatus(this, 'in_progress')">🚛 Mark In Progress</button>
+                        <button class="btn-outline" onclick="updateStatus(this, 'completed')">🏁 Mark Completed</button>
+                        <button class="btn-danger-outline" onclick="updateStatus(this, 'cancelled')">❌ Cancel</button>
+                    </div>
+                </div>
+
+                <div class="pickup-card" data-status="pending">
+                    <div class="pickup-card-header">
+                        <div class="pickup-user-info">
+                            <div class="pickup-user-avatar">👤</div>
+                            <div>
+                                <div class="pickup-user-name">Priya Verma</div>
+                                <div class="pickup-user-contact">📞 98712-34567 · ✉️ priya@outlook.com</div>
+                            </div>
+                        </div>
+                        <div class="pickup-meta-right">
+                            <span class="status-chip status-pending">⏳ Pending</span>
+                            <span class="pickup-req-id">#REQ-002</span>
+                        </div>
+                    </div>
+                    <div class="pickup-card-body">
+                        <div class="pickup-info-grid">
+                            <div class="pickup-info-item"><div class="pii-label">📅 Date</div><div class="pii-value">March 19, 2025</div></div>
+                            <div class="pickup-info-item"><div class="pii-label">🕐 Time Slot</div><div class="pii-value">02:00 PM – 04:00 PM</div></div>
+                            <div class="pickup-info-item"><div class="pii-label">⚖️ Est. Weight</div><div class="pii-value">~12 kg</div></div>
+                        </div>
+                        <div class="pickup-address"><span class="pii-label">📍 Address</span><span class="pii-value">Plot 45, Vasundhara, Ghaziabad — 201012</span></div>
+                        <div class="pickup-items-desc"><span class="pii-label">📦 Items</span><span class="pii-value">Old newspapers bundle, cardboard boxes, aluminium cans</span></div>
+                    </div>
+                    <div class="pickup-card-actions">
+                        <button class="btn-primary" onclick="updateStatus(this, 'confirmed')">✅ Confirm Pickup</button>
+                        <button class="btn-secondary" onclick="updateStatus(this, 'in_progress')">🚛 Mark In Progress</button>
+                        <button class="btn-outline" onclick="updateStatus(this, 'completed')">🏁 Mark Completed</button>
+                        <button class="btn-danger-outline" onclick="updateStatus(this, 'cancelled')">❌ Cancel</button>
+                    </div>
+                </div>
+
+                <div class="pickup-card" data-status="confirmed">
+                    <div class="pickup-card-header">
+                        <div class="pickup-user-info">
+                            <div class="pickup-user-avatar">👤</div>
+                            <div>
+                                <div class="pickup-user-name">Amit Gupta</div>
+                                <div class="pickup-user-contact">📞 99887-65432 · ✉️ amit.g@yahoo.com</div>
+                            </div>
+                        </div>
+                        <div class="pickup-meta-right">
+                            <span class="status-chip status-confirmed">🚛 Confirmed</span>
+                            <span class="pickup-req-id">#REQ-003</span>
+                        </div>
+                    </div>
+                    <div class="pickup-card-body">
+                        <div class="pickup-info-grid">
+                            <div class="pickup-info-item"><div class="pii-label">📅 Date</div><div class="pii-value">March 17, 2025</div></div>
+                            <div class="pickup-info-item"><div class="pii-label">🕐 Time Slot</div><div class="pii-value">08:00 AM – 10:00 AM</div></div>
+                            <div class="pickup-info-item"><div class="pii-label">⚖️ Est. Weight</div><div class="pii-value">~5 kg</div></div>
+                        </div>
+                        <div class="pickup-address"><span class="pii-label">📍 Address</span><span class="pii-value">House 78, DLF Phase 2, Gurugram — 122002</span></div>
+                        <div class="pickup-items-desc"><span class="pii-label">📦 Items</span><span class="pii-value">Iron rods, steel pipes, old bicycle frame parts</span></div>
+                    </div>
+                    <div class="pickup-card-actions">
+                        <button class="btn-secondary" onclick="updateStatus(this, 'in_progress')">🚛 Mark In Progress</button>
+                        <button class="btn-outline" onclick="updateStatus(this, 'completed')">🏁 Mark Completed</button>
+                        <button class="btn-danger-outline" onclick="updateStatus(this, 'cancelled')">❌ Cancel</button>
+                    </div>
+                </div>
+
+                <div class="pickup-card" data-status="completed">
+                    <div class="pickup-card-header">
+                        <div class="pickup-user-info">
+                            <div class="pickup-user-avatar">👤</div>
+                            <div>
+                                <div class="pickup-user-name">Sneha Patel</div>
+                                <div class="pickup-user-contact">📞 97651-23456 · ✉️ sneha@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class="pickup-meta-right">
+                            <span class="status-chip status-completed">✅ Completed</span>
+                            <span class="pickup-req-id">#REQ-004</span>
+                        </div>
+                    </div>
+                    <div class="pickup-card-body">
+                        <div class="pickup-info-grid">
+                            <div class="pickup-info-item"><div class="pii-label">📅 Date</div><div class="pii-value">March 14, 2025</div></div>
+                            <div class="pickup-info-item"><div class="pii-label">🕐 Time Slot</div><div class="pii-value">12:00 PM – 02:00 PM</div></div>
+                            <div class="pickup-info-item"><div class="pii-label">⚖️ Weight Collected</div><div class="pii-value">9.5 kg</div></div>
+                        </div>
+                        <div class="pickup-address"><span class="pii-label">📍 Address</span><span class="pii-value">B-12, Rohini Sector 7, New Delhi — 110085</span></div>
+                        <div class="pickup-items-desc"><span class="pii-label">📦 Items</span><span class="pii-value">E-waste: old laptop, 2 phones, chargers and cables</span></div>
+                    </div>
+                    <div class="pickup-card-actions completed-actions">
+                        <span class="completion-tag">✅ Pickup completed on March 14</span>
+                        <button class="btn-secondary" onclick="window.EcoCycle.showToast('Receipt sent to customer email','success')">📧 Send Receipt</button>
+                    </div>
+                </div>
+
+                <div class="pickup-card" data-status="pending">
+                    <div class="pickup-card-header">
+                        <div class="pickup-user-info">
+                            <div class="pickup-user-avatar">👤</div>
+                            <div>
+                                <div class="pickup-user-name">Kiran Rao</div>
+                                <div class="pickup-user-contact">📞 96543-21098 · ✉️ kiran.r@hotmail.com</div>
+                            </div>
+                        </div>
+                        <div class="pickup-meta-right">
+                            <span class="status-chip status-pending">⏳ Pending</span>
+                            <span class="pickup-req-id">#REQ-005</span>
+                        </div>
+                    </div>
+                    <div class="pickup-card-body">
+                        <div class="pickup-info-grid">
+                            <div class="pickup-info-item"><div class="pii-label">📅 Date</div><div class="pii-value">March 20, 2025</div></div>
+                            <div class="pickup-info-item"><div class="pii-label">🕐 Time Slot</div><div class="pii-value">04:00 PM – 06:00 PM</div></div>
+                            <div class="pickup-info-item"><div class="pii-label">⚖️ Est. Weight</div><div class="pii-value">~3 kg</div></div>
+                        </div>
+                        <div class="pickup-address"><span class="pii-label">📍 Address</span><span class="pii-value">Flat 901, Tower C, Supertech Eco Village, Noida — 201304</span></div>
+                        <div class="pickup-items-desc"><span class="pii-label">📦 Items</span><span class="pii-value">Plastic bottles, old magazines, tin cans</span></div>
+                        <div class="pickup-notes"><span>📝 Notes:</span> Building has strict entry — please bring ID proof.</div>
+                    </div>
+                    <div class="pickup-card-actions">
+                        <button class="btn-primary" onclick="updateStatus(this, 'confirmed')">✅ Confirm Pickup</button>
+                        <button class="btn-secondary" onclick="updateStatus(this, 'in_progress')">🚛 Mark In Progress</button>
+                        <button class="btn-outline" onclick="updateStatus(this, 'completed')">🏁 Mark Completed</button>
+                        <button class="btn-danger-outline" onclick="updateStatus(this, 'cancelled')">❌ Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        const statusLabels = {
+            pending:     '⏳ Pending',
+            confirmed:   '🚛 Confirmed',
+            in_progress: '🔄 In Progress',
+            completed:   '✅ Completed',
+            cancelled:   '❌ Cancelled'
+        };
+
+        const statusClasses = {
+            pending:     'status-pending',
+            confirmed:   'status-confirmed',
+            in_progress: 'status-inprogress',
+            completed:   'status-completed',
+            cancelled:   'status-cancelled'
+        };
+
+        function updateStatus(btn, newStatus) {
+            const card = btn.closest('.pickup-card');
+            const chip = card.querySelector('.status-chip');
+
+            // Update chip
+            chip.textContent = statusLabels[newStatus];
+            chip.className = 'status-chip ' + statusClasses[newStatus];
+
+            // Update card data attribute
+            card.dataset.status = newStatus;
+
+            // Update actions based on status
+            const actionsDiv = card.querySelector('.pickup-card-actions');
+            if (newStatus === 'completed') {
+                actionsDiv.innerHTML = `
+                    <span class="completion-tag">✅ Marked as completed</span>
+                    <button class="btn-secondary" onclick="window.EcoCycle.showToast('Receipt sent to customer email','success')">📧 Send Receipt</button>
+                `;
+                actionsDiv.classList.add('completed-actions');
+            } else if (newStatus === 'cancelled') {
+                actionsDiv.innerHTML = `<span class="completion-tag" style="color:var(--error)">❌ Request cancelled</span>`;
+                actionsDiv.classList.add('completed-actions');
+            }
+
+            // Update stats
+            recalcStats();
+            window.EcoCycle.showToast('Status updated: ' + statusLabels[newStatus], 'success');
+        }
+
+        function recalcStats() {
+            const cards = document.querySelectorAll('.pickup-card');
+            let pending = 0, confirmed = 0, completed = 0;
+            cards.forEach(c => {
+                const s = c.dataset.status;
+                if (s === 'pending')   pending++;
+                if (s === 'confirmed' || s === 'in_progress') confirmed++;
+                if (s === 'completed') completed++;
+            });
+            document.getElementById('statPending').textContent   = pending;
+            document.getElementById('statConfirmed').textContent = confirmed;
+            document.getElementById('statCompleted').textContent = completed;
+            document.getElementById('pendingCount').textContent  = pending;
+            document.getElementById('totalPickups').textContent  = cards.length;
+        }
+
+        function filterPickups(status, tabBtn) {
+            // Update active tab
+            if (tabBtn) {
+                document.querySelectorAll('.pf-tab').forEach(t => t.classList.remove('active'));
+                tabBtn.classList.add('active');
+            }
+            // Show/hide cards
+            document.querySelectorAll('.pickup-card').forEach(card => {
+                if (status === 'all' || card.dataset.status === status ||
+                    (status === 'confirmed' && card.dataset.status === 'in_progress')) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Init
+        recalcStats();
+    </script>
+</body>
+</html>

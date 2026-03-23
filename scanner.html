@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Scanner - EcoCycle AI</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="scanner.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="scanner-page">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/>
+                        <path d="M25 10 L25 40 M15 25 L35 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span class="brand-text">EcoCycle<span class="ai-text">AI</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="scanner.html" class="active">Waste Scanner</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="vendor-dashboard.html">Vendor Portal</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-secondary">My Account</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Scanner Section -->
+    <section class="scanner-main">
+        <div class="container-fluid">
+            <div class="scanner-layout">
+                <!-- Left Panel - Camera -->
+                <div class="camera-panel">
+                    <div class="panel-header">
+                        <h2>Live Waste Scanner</h2>
+                        <p>Point your camera at recyclable materials</p>
+                    </div>
+                    
+                    <div class="camera-container">
+                        <div class="camera-feed" id="cameraFeed">
+                            <video id="video" autoplay playsinline></video>
+                            <canvas id="canvas" style="display: none;"></canvas>
+                            
+                            <!-- Scanning Overlay -->
+                            <div class="scan-overlay" id="scanOverlay">
+                                <div class="scan-frame">
+                                    <div class="corner corner-tl"></div>
+                                    <div class="corner corner-tr"></div>
+                                    <div class="corner corner-bl"></div>
+                                    <div class="corner corner-br"></div>
+                                    <div class="scan-line"></div>
+                                </div>
+                                <div class="scan-status">
+                                    <div class="status-dot"></div>
+                                    <span id="scanStatus">Ready to scan</span>
+                                </div>
+                            </div>
+
+                            <!-- Detection Boxes (will be populated dynamically) -->
+                            <div id="detectionBoxes"></div>
+
+                            <!-- Placeholder when camera off -->
+                            <div class="camera-placeholder" id="cameraPlaceholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                    <circle cx="12" cy="13" r="4"/>
+                                </svg>
+                                <p>Click "Start Camera" to begin</p>
+                            </div>
+                        </div>
+
+                        <div class="camera-controls">
+                            <button class="control-btn" id="startCamera">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polygon points="10 8 16 12 10 16 10 8"/>
+                                </svg>
+                                Start Camera
+                            </button>
+                            <button class="control-btn" id="captureBtn" style="display: none;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                </svg>
+                                Capture & Analyze
+                            </button>
+                            <button class="control-btn secondary" id="uploadBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                                Upload Image
+                            </button>
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="quick-stats">
+                        <div class="stat-box">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="detectionCount">0</div>
+                                <div class="stat-label">Items Detected</div>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="processingSpeed">0 ms</div>
+                                <div class="stat-label">Processing Time</div>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">✓</div>
+                            <div class="stat-info">
+                                <div class="stat-value" id="confidence">0</div>
+                                <div class="stat-label">Confidence %</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel - Results -->
+                <div class="results-panel">
+                    <div class="panel-header">
+                        <h2>Detection Results</h2>
+                        <button class="btn-text" id="clearResults">Clear All</button>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        <h3>No detections yet</h3>
+                        <p>Scan or upload an image to start identifying waste materials</p>
+                    </div>
+
+                    <!-- Results List -->
+                    <div class="results-list" id="resultsList" style="display: none;">
+                        <!-- Dynamic content will be inserted here -->
+                    </div>
+
+                    <!-- Summary Card -->
+                    <div class="summary-card" id="summaryCard" style="display: none;">
+                        <div class="summary-header">
+                            <h3>Scan Summary</h3>
+                        </div>
+                        <div class="summary-breakdown">
+                            <div class="breakdown-item">
+                                <span>Total Items:</span>
+                                <strong id="totalItems">0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>♻️ Recyclable:</span>
+                                <strong id="recyclableItems" class="text-green">0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>⚠️ Non-Recyclable:</span>
+                                <strong id="nonRecyclableItems" class="text-red">0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Estimated Weight:</span>
+                                <strong id="estimatedWeight">0 kg</strong>
+                            </div>
+                        </div>
+                        <div class="summary-actions">
+                            <button class="btn-primary full-width" onclick="location.href='vendors.html'">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                                Schedule Pickup
+                            </button>
+                            <button class="btn-outline full-width" onclick="saveScanResults()">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                                    <polyline points="17 21 17 13 7 13 7 21"/>
+                                    <polyline points="7 3 7 8 15 8"/>
+                                </svg>
+                                Save Results
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Environmental Impact Preview -->
+                    <div class="impact-preview" id="impactPreview" style="display: none;">
+                        <h4>Environmental Impact</h4>
+                        <div class="impact-items">
+                            <div class="impact-item">
+                                <span class="impact-label">CO₂ Saved:</span>
+                                <span class="impact-value" id="co2Saved">0 kg</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-label">Trees Equivalent:</span>
+                                <span class="impact-value" id="treesEquiv">0</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-label">Water Saved:</span>
+                                <span class="impact-value" id="waterSaved">0 L</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Material Guide Modal -->
+    <div class="modal" id="materialGuide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Material Detection Guide</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="material-grid">
+                    <div class="material-item">
+                        <div class="material-icon blue">🥤</div>
+                        <h4>Plastic</h4>
+                        <p>Bottles, containers, packaging</p>
+                        <span class="bin-tag blue">Blue Bin</span>
+                    </div>
+                    <div class="material-item">
+                        <div class="material-icon blue">🫙</div>
+                        <h4>Glass</h4>
+                        <p>Bottles, jars, containers</p>
+                        <span class="bin-tag blue">Blue Bin</span>
+                    </div>
+                    <div class="material-item">
+                        <div class="material-icon blue">📄</div>
+                        <h4>Paper</h4>
+                        <p>Newspapers, cardboard, documents</p>
+                        <span class="bin-tag blue">Blue Bin</span>
+                    </div>
+                    <div class="material-item">
+                        <div class="material-icon blue">🔩</div>
+                        <h4>Metals</h4>
+                        <p>Aluminum, copper, iron, steel</p>
+                        <span class="bin-tag blue">Blue Bin</span>
+                    </div>
+                    <div class="material-item">
+                        <div class="material-icon red">⚠️</div>
+                        <h4>Hazardous</h4>
+                        <p>Batteries, chemicals, electronics</p>
+                        <span class="bin-tag red">Red Bin</span>
+                    </div>
+                    <div class="material-item">
+                        <div class="material-icon red">🗑️</div>
+                        <h4>Non-Recyclable</h4>
+                        <p>Contaminated items, mixed materials</p>
+                        <span class="bin-tag red">Red Bin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="floating-help" onclick="document.getElementById('materialGuide').classList.add('active')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+    </button>
+
+    <script src="js/main.js"></script>
+    <script src="js/scanner.js"></script>
+</body>
+</html>

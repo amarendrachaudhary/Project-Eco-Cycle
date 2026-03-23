@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendors - EcoCycle AI</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="vendors.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 50 50" fill="none">
+                        <circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/>
+                        <path d="M25 10 L25 40 M15 25 L35 25" stroke="currentColor" stroke-width="2.5"/>
+                    </svg>
+                </div>
+                <span class="brand-text">EcoCycle<span class="ai-text">AI</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="scanner.html">Waste Scanner</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="vendors.html" class="active">Vendors</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="vendor-dashboard.html">Vendor Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="vendors-hero">
+        <div class="container">
+            <h1>Verified Vendors</h1>
+            <p>Connect with trusted scrap collectors in your area</p>
+        </div>
+    </section>
+
+    <section class="vendors-filters">
+        <div class="container">
+            <div class="filter-bar">
+                <input type="text" placeholder="Search by location..." class="search-input">
+                <select class="filter-select">
+                    <option>All Materials</option>
+                    <option>Plastic</option>
+                    <option>Glass</option>
+                    <option>Paper</option>
+                    <option>Metal</option>
+                </select>
+                <select class="filter-select">
+                    <option>Any Distance</option>
+                    <option>Within 2 km</option>
+                    <option>Within 5 km</option>
+                    <option>Within 10 km</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="vendors-list">
+        <div class="container">
+            <div class="vendors-grid">
+
+                <div class="vendor-card">
+                    <div class="vendor-card-top">
+                        <div class="vendor-left">
+                            <div class="vendor-avatar">🏢</div>
+                            <div class="vendor-title-group">
+                                <h3>GreenCycle Solutions</h3>
+                                <div class="vendor-location">📍 Sector 12, Noida — 1.2 km away</div>
+                            </div>
+                        </div>
+                        <div class="vendor-badge verified">✓ Verified</div>
+                    </div>
+                    <div class="vendor-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-score">4.9</span>
+                        <span class="rating-count">(245 reviews)</span>
+                    </div>
+                    <p class="vendor-description">Best rates guaranteed for all recyclable materials. Trusted by 1200+ customers in Delhi-NCR.</p>
+                    <div class="vendor-tags">
+                        <span class="vendor-tag">♻️ All Materials</span>
+                        <span class="vendor-tag">💰 Best Rates</span>
+                        <span class="vendor-tag">⚡ Same Day</span>
+                    </div>
+                    <div class="vendor-actions">
+                        <button class="btn-primary" onclick="openPickupModal('GreenCycle Solutions')">📅 Schedule Pickup</button>
+                        <button class="btn-outline view-profile-btn" data-vendor="GreenCycle Solutions">View Profile</button>
+                    </div>
+                </div>
+
+                <div class="vendor-card">
+                    <div class="vendor-card-top">
+                        <div class="vendor-left">
+                            <div class="vendor-avatar">🚛</div>
+                            <div class="vendor-title-group">
+                                <h3>EcoWaste Collectors</h3>
+                                <div class="vendor-location">📍 Andheri West, Mumbai — 2.5 km away</div>
+                            </div>
+                        </div>
+                        <div class="vendor-badge verified">✓ Verified</div>
+                    </div>
+                    <div class="vendor-rating">
+                        <span class="stars">⭐⭐⭐⭐</span>
+                        <span class="rating-score">4.6</span>
+                        <span class="rating-count">(189 reviews)</span>
+                    </div>
+                    <p class="vendor-description">Specialising in plastic and paper recycling with quick turnaround. Same-day pickups available.</p>
+                    <div class="vendor-tags">
+                        <span class="vendor-tag">♻️ Plastic</span>
+                        <span class="vendor-tag">♻️ Paper</span>
+                        <span class="vendor-tag">⚡ Same Day</span>
+                    </div>
+                    <div class="vendor-actions">
+                        <button class="btn-primary" onclick="openPickupModal('EcoWaste Collectors')">📅 Schedule Pickup</button>
+                        <button class="btn-outline view-profile-btn" data-vendor="EcoWaste Collectors">View Profile</button>
+                    </div>
+                </div>
+
+                <div class="vendor-card">
+                    <div class="vendor-card-top">
+                        <div class="vendor-left">
+                            <div class="vendor-avatar">🔩</div>
+                            <div class="vendor-title-group">
+                                <h3>Metal &amp; Scrap Recyclers</h3>
+                                <div class="vendor-location">📍 Electronic City, Bengaluru — 3.8 km away</div>
+                            </div>
+                        </div>
+                        <div class="vendor-badge verified">✓ Verified</div>
+                    </div>
+                    <div class="vendor-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-score">4.8</span>
+                        <span class="rating-count">(312 reviews)</span>
+                    </div>
+                    <p class="vendor-description">Premium prices for all metals and e-waste. Certified recycling facility with doorstep collection.</p>
+                    <div class="vendor-tags">
+                        <span class="vendor-tag">♻️ Metals</span>
+                        <span class="vendor-tag">💻 E-Waste</span>
+                        <span class="vendor-tag">💰 Premium Prices</span>
+                    </div>
+                    <div class="vendor-actions">
+                        <button class="btn-primary" onclick="openPickupModal('Metal & Scrap Recyclers')">📅 Schedule Pickup</button>
+                        <button class="btn-outline view-profile-btn" data-vendor="Metal & Scrap Recyclers">View Profile</button>
+                    </div>
+                </div>
+
+                <div class="vendor-card">
+                    <div class="vendor-card-top">
+                        <div class="vendor-left">
+                            <div class="vendor-avatar">📄</div>
+                            <div class="vendor-title-group">
+                                <h3>PaperBack Eco</h3>
+                                <div class="vendor-location">📍 HITEC City, Hyderabad — 1.9 km away</div>
+                            </div>
+                        </div>
+                        <div class="vendor-badge verified">✓ Verified</div>
+                    </div>
+                    <div class="vendor-rating">
+                        <span class="stars">⭐⭐⭐⭐</span>
+                        <span class="rating-score">4.4</span>
+                        <span class="rating-count">(98 reviews)</span>
+                    </div>
+                    <p class="vendor-description">Newspaper, magazines and cardboard specialists. We also accept books and office paper waste.</p>
+                    <div class="vendor-tags">
+                        <span class="vendor-tag">♻️ Paper</span>
+                        <span class="vendor-tag">♻️ Cardboard</span>
+                        <span class="vendor-tag">⚡ Same Day</span>
+                    </div>
+                    <div class="vendor-actions">
+                        <button class="btn-primary" onclick="openPickupModal('PaperBack Eco')">📅 Schedule Pickup</button>
+                        <button class="btn-outline view-profile-btn" data-vendor="PaperBack Eco">View Profile</button>
+                    </div>
+                </div>
+
+                <div class="vendor-card">
+                    <div class="vendor-card-top">
+                        <div class="vendor-left">
+                            <div class="vendor-avatar">🫙</div>
+                            <div class="vendor-title-group">
+                                <h3>GlassAct Recycling</h3>
+                                <div class="vendor-location">📍 T Nagar, Chennai — 4.1 km away</div>
+                            </div>
+                        </div>
+                        <div class="vendor-badge verified">✓ Verified</div>
+                    </div>
+                    <div class="vendor-rating">
+                        <span class="stars">⭐⭐⭐⭐⭐</span>
+                        <span class="rating-score">4.7</span>
+                        <span class="rating-count">(156 reviews)</span>
+                    </div>
+                    <p class="vendor-description">All types of glass collected and recycled responsibly. Bottles, jars, containers and broken glass accepted.</p>
+                    <div class="vendor-tags">
+                        <span class="vendor-tag">♻️ Glass</span>
+                        <span class="vendor-tag">🫙 All Types</span>
+                    </div>
+                    <div class="vendor-actions">
+                        <button class="btn-primary" onclick="openPickupModal('GlassAct Recycling')">📅 Schedule Pickup</button>
+                        <button class="btn-outline view-profile-btn" data-vendor="GlassAct Recycling">View Profile</button>
+                    </div>
+                </div>
+
+                <div class="vendor-card">
+                    <div class="vendor-card-top">
+                        <div class="vendor-left">
+                            <div class="vendor-avatar">💻</div>
+                            <div class="vendor-title-group">
+                                <h3>E-Cycle Hub</h3>
+                                <div class="vendor-location">📍 Kothrud, Pune — 2.7 km away</div>
+                            </div>
+                        </div>
+                        <div class="vendor-badge verified">✓ Verified</div>
+                    </div>
+                    <div class="vendor-rating">
+                        <span class="stars">⭐⭐⭐⭐</span>
+                        <span class="rating-score">4.5</span>
+                        <span class="rating-count">(201 reviews)</span>
+                    </div>
+                    <p class="vendor-description">Certified e-waste and battery disposal. Safe handling of electronics, phones, laptops and hazardous waste.</p>
+                    <div class="vendor-tags">
+                        <span class="vendor-tag">💻 Electronics</span>
+                        <span class="vendor-tag">🔋 Batteries</span>
+                        <span class="vendor-tag">⚡ Same Day</span>
+                    </div>
+                    <div class="vendor-actions">
+                        <button class="btn-primary" onclick="openPickupModal('E-Cycle Hub')">📅 Schedule Pickup</button>
+                        <button class="btn-outline view-profile-btn" data-vendor="E-Cycle Hub">View Profile</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Pickup Modal -->
+    <div class="modal" id="pickupModal">
+        <div class="modal-content pickup-modal-content">
+            <div class="modal-header">
+                <h3>📅 Schedule Pickup</h3>
+                <button class="modal-close" onclick="document.getElementById('pickupModal').classList.remove('active')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pickup-vendor-info">
+                    <div class="pickup-vendor-icon">🏢</div>
+                    <div>
+                        <div class="pickup-vendor-name" id="pickupVendorName">Vendor Name</div>
+                        <div class="pickup-vendor-sub">Verified Vendor · Accepting all materials</div>
+                    </div>
+                </div>
+                <form class="pickup-form" onsubmit="submitPickup(event)">
+                    <div class="pickup-form-row">
+                        <div class="form-group">
+                            <label>Pickup Date *</label>
+                            <input type="date" id="pickupDate" required min="" />
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Time</label>
+                            <select id="pickupTime">
+                                <option>08:00 AM – 10:00 AM</option>
+                                <option>10:00 AM – 12:00 PM</option>
+                                <option>12:00 PM – 02:00 PM</option>
+                                <option>02:00 PM – 04:00 PM</option>
+                                <option>04:00 PM – 06:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Pickup Address *</label>
+                        <input type="text" id="pickupAddress" placeholder="Flat 12, Green Colony, Noida…" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Items to Recycle</label>
+                        <textarea id="pickupItems" placeholder="Describe your items: 5 plastic bottles, 2 kg newspaper, old iron rods…" rows="3"></textarea>
+                    </div>
+                    <div class="pickup-form-row">
+                        <div class="form-group">
+                            <label>Estimated Weight (kg)</label>
+                            <input type="number" id="pickupWeight" placeholder="e.g. 5" min="0.1" step="0.1" />
+                        </div>
+                        <div class="form-group">
+                            <label>Special Notes</label>
+                            <input type="text" id="pickupNotes" placeholder="Ring doorbell twice…" />
+                        </div>
+                    </div>
+                    <div class="pickup-actions">
+                        <button type="submit" class="btn-primary full-width">✅ Confirm Pickup Request</button>
+                        <button type="button" class="btn-secondary full-width" onclick="document.getElementById('pickupModal').classList.remove('active')">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 EcoCycle AI</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function openPickupModal(vendorName) {
+            document.getElementById('pickupVendorName').textContent = vendorName;
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('pickupDate').min = today;
+            document.getElementById('pickupModal').classList.add('active');
+        }
+
+        function submitPickup(e) {
+            e.preventDefault();
+            const date = document.getElementById('pickupDate').value;
+            const address = document.getElementById('pickupAddress').value;
+            if (!date || !address) { alert('Please fill in required fields.'); return; }
+            document.getElementById('pickupModal').classList.remove('active');
+            window.EcoCycle.showToast('Pickup scheduled successfully! 📅', 'success');
+            e.target.reset();
+        }
+
+        document.querySelectorAll('.view-profile-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const vendor = encodeURIComponent(this.getAttribute('data-vendor'));
+                window.location.href = `vendor-profile.html?vendor=${vendor}`;
+            });
+        });
+    </script>
+</body>
+</html>

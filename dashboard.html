@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - EcoCycle AI</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="25" cy="25" r="23" stroke="currentColor" stroke-width="2"/>
+                        <path d="M25 10 L25 40 M15 25 L35 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span class="brand-text">EcoCycle<span class="ai-text">AI</span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="scanner.html">Waste Scanner</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="vendors.html">Vendors</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="vendor-dashboard.html">Vendor Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="user-profile">
+                    <div class="avatar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <div class="user-info">
+                        <h3>Eco Warrior</h3>
+                        <p>Level 12 • Platinum</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#overview" class="nav-item active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                    Overview
+                </a>
+                <a href="#analytics" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                    Analytics
+                </a>
+                <a href="#history" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Scan History
+                </a>
+                <a href="#leaderboard" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 16v-3a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3"/>
+                        <circle cx="12" cy="6" r="4"/>
+                        <path d="M18 22h-4V12h4v10zM6 22h4V18H6v4z"/>
+                    </svg>
+                    Leaderboard
+                </a>
+                <a href="rewards.html" class="nav-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="7"/>
+                        <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                    </svg>
+                    Rewards
+                </a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <div class="header-content">
+                    <h1>Dashboard</h1>
+                    <p>Track your sustainability journey</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary">Export Data</button>
+                    <button class="btn-primary" onclick="location.href='scanner.html'">New Scan</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card card-1">
+                    <div class="stat-header">
+                        <div class="stat-icon">💰</div>
+                        <span class="stat-trend up">+12%</span>
+                    </div>
+                    <div class="stat-value">₹2,450</div>
+                    <div class="stat-label">Total Earnings</div>
+                    <div class="stat-footer">This month</div>
+                </div>
+
+                <div class="stat-card card-2">
+                    <div class="stat-header">
+                        <div class="stat-icon">♻️</div>
+                        <span class="stat-trend up">+8%</span>
+                    </div>
+                    <div class="stat-value">342</div>
+                    <div class="stat-label">Items Recycled</div>
+                    <div class="stat-footer">Last 30 days</div>
+                </div>
+
+                <div class="stat-card card-3">
+                    <div class="stat-header">
+                        <div class="stat-icon">🌍</div>
+                        <span class="stat-trend up">+15%</span>
+                    </div>
+                    <div class="stat-value">1.2K kg</div>
+                    <div class="stat-label">CO₂ Reduced</div>
+                    <div class="stat-footer">Carbon offset</div>
+                </div>
+
+                <div class="stat-card card-4">
+                    <div class="stat-header">
+                        <div class="stat-icon">🏆</div>
+                        <span class="stat-rank">#12</span>
+                    </div>
+                    <div class="stat-value">8,540</div>
+                    <div class="stat-label">EcoPoints</div>
+                    <div class="stat-footer">City ranking</div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Recycling Activity</h3>
+                        <select class="time-filter">
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                            <option>Last 3 months</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="card-header">
+                        <h3>Material Breakdown</h3>
+                    </div>
+                    <div class="materials-breakdown">
+                        <div class="material-bar">
+                            <div class="bar-info">
+                                <span class="material-name">Plastic</span>
+                                <span class="material-percentage">42%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill plastic" style="width: 42%"></div>
+                            </div>
+                        </div>
+                        <div class="material-bar">
+                            <div class="bar-info">
+                                <span class="material-name">Paper</span>
+                                <span class="material-percentage">28%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill paper" style="width: 28%"></div>
+                            </div>
+                        </div>
+                        <div class="material-bar">
+                            <div class="bar-info">
+                                <span class="material-name">Glass</span>
+                                <span class="material-percentage">18%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill glass" style="width: 18%"></div>
+                            </div>
+                        </div>
+                        <div class="material-bar">
+                            <div class="bar-info">
+                                <span class="material-name">Metal</span>
+                                <span class="material-percentage">12%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill metal" style="width: 12%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid-2">
+                <div class="impact-card">
+                    <div class="card-header">
+                        <h3>Environmental Impact</h3>
+                        <span class="badge-success">Growing</span>
+                    </div>
+                    <div class="impact-metrics">
+                        <div class="impact-metric">
+                            <div class="metric-visual">
+                                <div class="circular-chart">
+                                    <svg viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="40" class="chart-bg"/>
+                                        <circle cx="50" cy="50" r="40" class="chart-fill" style="stroke-dasharray: 220 251.2"/>
+                                    </svg>
+                                    <div class="chart-text">87%</div>
+                                </div>
+                            </div>
+                            <div class="metric-details">
+                                <h4>CO₂ Reduction</h4>
+                                <p>1,245 kg saved</p>
+                                <span class="equivalent">= 65 trees planted</span>
+                            </div>
+                        </div>
+
+                        <div class="impact-metric">
+                            <div class="metric-visual">
+                                <div class="circular-chart">
+                                    <svg viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="40" class="chart-bg"/>
+                                        <circle cx="50" cy="50" r="40" class="chart-fill" style="stroke-dasharray: 190 251.2"/>
+                                    </svg>
+                                    <div class="chart-text">76%</div>
+                                </div>
+                            </div>
+                            <div class="metric-details">
+                                <h4>Water Saved</h4>
+                                <p>15,400 liters</p>
+                                <span class="equivalent">= 103 days supply</span>
+                            </div>
+                        </div>
+
+                        <div class="impact-metric">
+                            <div class="metric-visual">
+                                <div class="circular-chart">
+                                    <svg viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="40" class="chart-bg"/>
+                                        <circle cx="50" cy="50" r="40" class="chart-fill" style="stroke-dasharray: 235 251.2"/>
+                                    </svg>
+                                    <div class="chart-text">94%</div>
+                                </div>
+                            </div>
+                            <div class="metric-details">
+                                <h4>Energy Saved</h4>
+                                <p>2,840 kWh</p>
+                                <span class="equivalent">= 4 months power</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-scans">
+                    <div class="card-header">
+                        <h3>Recent Scans</h3>
+                        <a href="#history" class="link-view-all">View All</a>
+                    </div>
+                    <div class="scans-list">
+                        <div class="scan-item">
+                            <div class="scan-image">
+                                <div class="placeholder-img">📦</div>
+                            </div>
+                            <div class="scan-details">
+                                <h4>Mixed Recyclables</h4>
+                                <p>3 items • Plastic, Glass, Paper</p>
+                                <span class="scan-time">2 hours ago</span>
+                            </div>
+                            <div class="scan-value">₹45</div>
+                        </div>
+
+                        <div class="scan-item">
+                            <div class="scan-image">
+                                <div class="placeholder-img">🥤</div>
+                            </div>
+                            <div class="scan-details">
+                                <h4>Plastic Bottles</h4>
+                                <p>5 items • PET Plastic</p>
+                                <span class="scan-time">Yesterday</span>
+                            </div>
+                            <div class="scan-value">₹60</div>
+                        </div>
+
+                        <div class="scan-item">
+                            <div class="scan-image">
+                                <div class="placeholder-img">📰</div>
+                            </div>
+                            <div class="scan-details">
+                                <h4>Newspapers</h4>
+                                <p>2.5 kg • Paper</p>
+                                <span class="scan-time">2 days ago</span>
+                            </div>
+                            <div class="scan-value">₹25</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievements-section">
+                <div class="card-header">
+                    <h3>Achievements & Badges</h3>
+                </div>
+                <div class="achievements-grid">
+                    <div class="achievement unlocked">
+                        <div class="achievement-icon">🌟</div>
+                        <h4>First Scan</h4>
+                        <p>Completed your first scan</p>
+                    </div>
+                    <div class="achievement unlocked">
+                        <div class="achievement-icon">♻️</div>
+                        <h4>Century Club</h4>
+                        <p>Recycled 100 items</p>
+                    </div>
+                    <div class="achievement unlocked">
+                        <div class="achievement-icon">🌍</div>
+                        <h4>Planet Protector</h4>
+                        <p>Saved 1000 kg CO₂</p>
+                    </div>
+                    <div class="achievement locked">
+                        <div class="achievement-icon">💎</div>
+                        <h4>Diamond Tier</h4>
+                        <p>Reach 10,000 points</p>
+                    </div>
+                    <div class="achievement locked">
+                        <div class="achievement-icon">🏆</div>
+                        <h4>Champion</h4>
+                        <p>Rank in top 10</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
